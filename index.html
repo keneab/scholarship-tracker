@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Departures — Scholarship Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="board-header">
+    <div class="board-header__left">
+      <span class="eyebrow">TERMINAL / APPLICATIONS</span>
+      <h1>Departures</h1>
+      <p class="sub">Every scholarship you're chasing, sorted by how soon it leaves without you.</p>
+    </div>
+    <div class="board-header__right" id="statStrip">
+      <!-- stats injected -->
+    </div>
+  </header>
+
+  <section class="controls">
+    <div class="filters" id="filters">
+      <button class="chip is-active" data-filter="all">All</button>
+      <button class="chip" data-filter="Researching">Researching</button>
+      <button class="chip" data-filter="Drafting">Drafting</button>
+      <button class="chip" data-filter="Submitted">Submitted</button>
+      <button class="chip" data-filter="Interview">Interview</button>
+      <button class="chip" data-filter="Decision">Decision</button>
+      <button class="chip" data-filter="Archived">Archived</button>
+    </div>
+    <div class="controls__actions">
+      <button class="btn btn--ghost" id="exportBtn">Export</button>
+      <label class="btn btn--ghost" for="importFile">Import</label>
+      <input type="file" id="importFile" accept="application/json" hidden>
+      <button class="btn btn--primary" id="addBtn">+ Add scholarship</button>
+    </div>
+  </section>
+
+  <section class="board" aria-label="Scholarship departure board">
+    <div class="board__row board__row--head">
+      <span>Scholarship</span>
+      <span>Country</span>
+      <span>Status</span>
+      <span>Deadline</span>
+      <span>Boards in</span>
+      <span></span>
+    </div>
+    <div id="boardBody"></div>
+    <p class="empty" id="emptyState">No entries yet. Add your first scholarship to start the board.</p>
+  </section>
+
+</div>
+
+<!-- Add / Edit panel -->
+<div class="overlay" id="overlay">
+  <form class="panel" id="entryForm">
+    <div class="panel__head">
+      <h2 id="panelTitle">Add scholarship</h2>
+      <button type="button" class="panel__close" id="closePanel" aria-label="Close">&times;</button>
+    </div>
+
+    <input type="hidden" id="entryId">
+
+    <label class="field">
+      <span>Scholarship name</span>
+      <input type="text" id="fName" required placeholder="e.g. DAAD EPOS Scholarship">
+    </label>
+
+    <div class="field-row">
+      <label class="field">
+        <span>Country / region</span>
+        <input type="text" id="fCountry" required placeholder="e.g. Germany">
+      </label>
+      <label class="field">
+        <span>Deadline</span>
+        <input type="date" id="fDeadline" required>
+      </label>
+    </div>
+
+    <label class="field">
+      <span>Status</span>
+      <select id="fStatus">
+        <option>Researching</option>
+        <option>Drafting</option>
+        <option>Submitted</option>
+        <option>Interview</option>
+        <option>Decision</option>
+        <option>Archived</option>
+      </select>
+    </label>
+
+    <label class="field">
+      <span>Link</span>
+      <input type="url" id="fLink" placeholder="https://...">
+    </label>
+
+    <label class="field">
+      <span>Notes / documents needed</span>
+      <textarea id="fNotes" rows="3" placeholder="Transcript, SOP draft 2, two recommendation letters..."></textarea>
+    </label>
+
+    <div class="panel__actions">
+      <button type="button" class="btn btn--danger" id="deleteBtn" hidden>Delete</button>
+      <div class="panel__actions-right">
+        <button type="button" class="btn btn--ghost" id="cancelBtn">Cancel</button>
+        <button type="submit" class="btn btn--primary">Save entry</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
