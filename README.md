@@ -1,9 +1,6 @@
 # Departures — Scholarship Tracker
 
-A single-page tracker for scholarship and opportunity applications, styled
-like an airport departures board. Each entry shows how many days remain
-until its deadline, color-coded by urgency for an at-a-glance view of what
-needs attention.
+new update
 
 ## Features
 
